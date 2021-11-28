@@ -6,10 +6,15 @@ module.exports = async (deployer, network, [defaultAccount]) => {
     // token and the Oracle contract
 
     // currently hardcoded for Kovan
-    let priceFeedAddress = KOVAN_ETH_USD_PRICE_FEED
-    try {
-        await deployer.deploy(PriceConsumerV3, KOVAN_ETH_USD_PRICE_FEED, { from: defaultAccount })
-    } catch (err) {
-        console.error(err)
+    if (!network.startsWith('kovan')) {
+        console.log("only for Kovan right now!")
+    }
+    else {
+        let priceFeedAddress = KOVAN_ETH_USD_PRICE_FEED
+        try {
+            await deployer.deploy(PriceConsumerV3, KOVAN_ETH_USD_PRICE_FEED, { from: defaultAccount })
+        } catch (err) {
+            console.error(err)
+        }
     }
 }

@@ -30,6 +30,13 @@ module.exports = {
       network_id: '42',
       skipDryRun: true
     },
+    platon: {
+      provider: () => {
+        return new HDWalletProvider(mnemonic, url)
+      },
+      network_id: '1',
+      skipDryRun: true
+},
   },
   compilers: {
     solc: {
